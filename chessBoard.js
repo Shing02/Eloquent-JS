@@ -26,3 +26,16 @@ while (tracker < size) {
   console.log(fullBoard);
 
 }
+
+/*
+chessBoard(8)
+# # # # 
+ # # # #
+# # # # 
+ # # # #
+# # # # 
+ # # # #
+# # # # 
+ # # # #
+
+
