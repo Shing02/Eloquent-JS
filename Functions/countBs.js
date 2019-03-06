@@ -1,4 +1,4 @@
-function countBS(param) {
+function countBS(str, param) {
 
   let count = 0;
   let index = 0;
