@@ -1,17 +1,17 @@
 function range(start, end, step) {
   
-let arr = [];
+let array = [];
 
-function oldRange(start, end) {  
+function oldRange(start, end) {  // if step is undefined
   if (start < end) {
     for (let i = start; i <= end; i++) {
-      arr.push(i);
+      array.push(i);
     } 
   }
   
   if (start > end) {
     for (let i = start; i >= end; i--) {
-      arr.push(i);
+      array.push(i);
     }
   }
 }
@@ -22,16 +22,16 @@ if (step === undefined) {
 
 if (step < 0) {
   for (let i = start; i >= end; i += step) {
-    arr.push(i);
+    array.push(i);
   }
 }
 
 if (step > 0) {
   for (let i = start; i <= end; i += step) {
-    arr.push(i);
+    array.push(i);
   }
 }
     
-return arr;
+return array;
   
 }
