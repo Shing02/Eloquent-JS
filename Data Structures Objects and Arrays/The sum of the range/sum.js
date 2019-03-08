@@ -1,9 +1,9 @@
-function sum(args) {
+function sum(array) {
   
   let count = 0;
   
-  for (let arg of args) {
-    count += arg;
+  for (let arr of array) {
+    count += arr;
   }
   
 return count;
