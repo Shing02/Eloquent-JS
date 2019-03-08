@@ -1,20 +1,20 @@
 function range(start, end) {
   
-  let arr = [];
+  let array = [];
   
   if (start < end) {
   	for (let i = start; i <= end; i++) {
-    arr.push(i);
+    array.push(i);
   	} 
   }
   
   if (start > end) {
   	for (let i = start; i >= end; i--) {
-    arr.push(i);
+    array.push(i);
   	}
   }
   
-  return arr;
+  return array;
   
 }
   
