@@ -1,14 +1,21 @@
-/* this function turns an 1D array like [1,2,3] into the following list (from an existing empty object):
-{
-  value : 1,
-  ref : {
-          value : 2,
-          ref : {  etc.
-The for loop does two things: if the considered object is empty, it fills it with the value and ref properties. If the object is
-not empty, it calls the recursive fonction. The recursive fonction fills the object passed as a parameter if and only if the 
-object is empty. If it isn't, it calls itself with the obj.ref parameter, etc. I had a hard time with this one and the
-implementation may seem a bit gross but readable, let me know if you have a more elegant / concise way to do it. */
+// Academic implementation, we loop the array backwards while constantly redifining the list.
 
+function arrayToList(array) {
+  
+  let list = null;
+  for (let i = array.length-1; i >= 0; i--) {
+    list = { 
+      value : array[i],
+      rest : list
+    }
+  }
+  
+  return list;
+    
+  }
+
+
+// My original attempt, for the record, which was way way too long and complicate ( ͡° ͜ʖ ͡°)
 
 function arrayToList(array) {
 
