@@ -33,8 +33,8 @@ function arrayToList(array) {
     } else {
       recursive(obj); //once the first array item called, everythings takes place in the recursive function.
     }
-    
+  }
+  
   return obj;
   
-  }
 }
