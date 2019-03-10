@@ -1,5 +1,5 @@
 // Academic implementation, the syntax of the for loop is a bit unusual but overall the idea remains the same when we compare
-// with more nood-friendly implementations I designed below
+// with more noob-friendly implementations I designed below
 
 function listToArray(list) {
   
@@ -14,6 +14,7 @@ function listToArray(list) {
 }
       
 
+// My original attempts lies below
 // *********************** LOOP IMPLEMENTATION ************************
 
 function listToArray(arg) {
