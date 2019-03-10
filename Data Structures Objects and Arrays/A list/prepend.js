@@ -12,3 +12,26 @@ function arrayToList(array) {
   return list;
     
 }
+
+
+function listToArray(list) {
+  
+  let array = [];
+  for (let node = list; node; node = node.rest) { // (init node; while node === true the loops goes on; incrementation)
+    array.push(node.value);
+    
+    }
+  
+  return array;
+  
+}
+
+function prepend(elem, list) {
+  
+  let newList = [];
+  let array = listToArray(list);
+  array.unshift(elem);
+  newList = arrayToList(array);
+  return newList;
+  
+}
