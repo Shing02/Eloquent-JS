@@ -1,20 +1,19 @@
-const object = { 
-  value : 1,
-  ref : {
-    value : 2,
-    ref : {
-      value : 3,
-      ref : {
-        value : 4,
-        ref : {
-          value : 5,
-          ref : null
-        }
-      }
+// Academic implementation, the syntax of the for loop is a bit unusual but overall the idea remains the same when we compare
+// with more nood-friendly implementations I designed below
+
+function listToArray(list) {
+  
+  let array = [];
+  for (let node = list; node; node = node.ref) { // (init node; while node === true the loops goes on; incrementation)
+    array.push(node.value);
+    
     }
-  }
+  
+  return array;
+  
 }
       
+
 // *********************** LOOP IMPLEMENTATION ************************
 
 function listToArray(arg) {
