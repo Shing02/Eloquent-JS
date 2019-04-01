@@ -36,7 +36,7 @@ function buildGraph(edges) {
 
 const roadGraph = buildGraph(roads);
 
-/* const obj = { 
+/* roadGraph == { 
       "Alice's House": [ "Bob's House", "Cabin", "Post Office" ],
       "Bob's House": [ "Alice's House", "Town Hall" ],
       "Cabin": [ "Alice's House" ],
