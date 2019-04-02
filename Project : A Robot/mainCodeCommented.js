@@ -59,7 +59,7 @@ class VillageState {
   }
 
   move(destination) {
-    if (!roadGraph[this.place].includes(destination)) { // I don't understand this block because the randomRobot function makes sure we pick a place we can access from our current location
+    if (!roadGraph[this.place].includes(destination)) { // this block may be redundant because the randomRobot function makes sure we pick a place we can access from our current location
       return this;        
     } else {
       let parcels = this.parcels
