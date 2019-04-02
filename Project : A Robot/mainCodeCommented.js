@@ -94,7 +94,7 @@ function randomRobot(state) {
   return {direction: randomPick(roadGraph[state.place])}; 
 }
   
-VillageState.random = function(parcelCount = 5) {
+VillageState.random = function(parcelCount = 5) { // static method ? 
   let parcels = [];
   for (let i = 0; i < parcelCount; i++) {
     let address = randomPick(Object.keys(roadGraph));
@@ -108,3 +108,63 @@ VillageState.random = function(parcelCount = 5) {
 };
 
 runRobot(VillageState.random(), randomRobot);
+
+/* We will execute the first three iterations of the runRobot() function to show how things work.
+First iteration:
+  - turn == 0;
+  - action == randomRobot(VillageState.random(), memory) => at this point the program execute the random() method to assign its value as an argument
+    - for the sake of the explanation, let's set up a parcels array with the default value (5). It's very important to remember that runRobot never knows 
+      what's inside the random() method, it just takes the returned value as an argument.
+      In this case, the returned value, once the random() method executed, is 
+      { 
+        place : "Post Office, 
+        parcels : [
+                  { place : "Farm", adress : "Post Office" }
+                  { place : "Cabin", adress : "Alice's House" }
+                  { place : "Daria's House", adress : "Cabin" }
+                  { place : "Post Office", adress : "Bob's House" }
+                  { place : "Farm", adress : "Cabin" }
+                 ]
+      }
+      action == { direction : randomPick(roadGraph["Post Office"]) == randomPick([ "Alice's House", "Marketplace" ]) == "Alice's House" }
+      action == { direction : "Alice's House" };
+  - state == VillageState.random().move("Alice's House"); //Once again, we take the returned value of random() method, which is the village statewe just saw above.
+    It's a VillageState instance so the move() method is inherited. 
+    state == { 
+        place : "Post Office, 
+        parcels : [
+                   { place : "Farm", adress : "Post Office" }
+                   { place : "Cabin", adress : "Alice's House" }
+                   { place : "Daria's House", adress : "Cabin" }
+                   { place : "Alice's House", adress : "Bob's House" } // this object changed, its original position was "Post Office", the robot collected it and updated its position to the next destination
+                   { place : "Farm", adress : "Cabin" }
+                  ]
+      }
+    
+Second iteration:
+  - turn == 1;
+  - action == { direction : "Bob's House" }
+  - state == { 
+              place : "Post Office", 
+              parcels : [
+                         { place : "Farm", adress : "Post Office" }
+                         { place : "Cabin", adress : "Alice's House" }
+                         { place : "Daria's House", adress : "Cabin" }
+                         { place : "Farm", adress : "Cabin" }
+                        ]
+            }
+     L'objet { place : "Alice's House", adress : "Bob's House" } vu au tour précédent est maintenant devenu { place : "Bob's House", adress : "Bob's House" } . 
+     Cet objet disparaît car place == adress, le robot livre le colis 
+     
+Third iteration:
+  - turn = 2;
+  -  action : { direction : "Town Hall" }
+  - state ==  state == { 
+              place : "Town Hall", 
+              parcels : [
+                         { place : "Farm", adress : "Post Office" }
+                         { place : "Cabin", adress : "Alice's House" }
+                         { place : "Daria's House", adress : "Cabin" }
+                         { place : "Farm", adress : "Cabin" }
+                        ]
+            }
