@@ -88,14 +88,14 @@ function runRobot(state, robot, memory) {
 
 function randomPick(array) {  
   let choice = Math.floor(Math.random() * array.length); 
-  return array[choice];
+  return array[choice];  // takes an array as argument and returns a random value in this array
 }
 
 function randomRobot(state) {
-  return {direction: randomPick(roadGraph[state.place])}; 
+  return {direction: randomPick(roadGraph[state.place])}; // takes a VillageSate instance as argument and returns one location accessible from the current location
 }
   
-VillageState.random = function(parcelCount = 5) { // static method ? 
+VillageState.random = function(parcelCount = 5) { 
   let parcels = [];
   for (let i = 0; i < parcelCount; i++) {
     let address = randomPick(Object.keys(roadGraph));
@@ -118,8 +118,8 @@ First iteration:
       what's inside the random() method, it just takes the returned value as an argument.
       In this case, the returned value, once the random() method executed, is 
       { 
-        place : "Post Office, 
-        parcels : [
+        place : "Post Office, //this one won't change, the robot always begins here
+        parcels : [  // this one is random, I just executed the random() method and pasted the result here
                   { place : "Farm", adress : "Post Office" }
                   { place : "Cabin", adress : "Alice's House" }
                   { place : "Daria's House", adress : "Cabin" }
