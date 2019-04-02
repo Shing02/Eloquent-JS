@@ -153,8 +153,8 @@ Second iteration:
                          { place : "Farm", adress : "Cabin" }
                         ]
             }
-     L'objet { place : "Alice's House", adress : "Bob's House" } vu au tour précédent est maintenant devenu { place : "Bob's House", adress : "Bob's House" } . 
-     Cet objet disparaît car place == adress, le robot livre le colis 
+     The { place : "Alice's House", adress : "Bob's House" } object we saw the last time is now { place : "Bob's House", adress : "Bob's House" } . 
+     place == adress, the robot delivers the parcel and the parcel array is updated. 
      
 Third iteration:
   - turn = 2;
