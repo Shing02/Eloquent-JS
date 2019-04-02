@@ -1,3 +1,4 @@
+// IF YOU DON'T UNDERSTAND HOW THE PROGRAM WORKS, GO TO THE END WHERE I SHOW THE FIRST ITERATIONS
 // A state is a picture of the village at a given moment, where place represents the location of the robot and parcels the array
 // of parcels constantly updated
 
