@@ -1,6 +1,9 @@
-// IF YOU DON'T UNDERSTAND HOW THE PROGRAM WORKS, GO TO THE END WHERE I SHOW THE FIRST ITERATIONS
-// A state is a picture of the village at a given moment, where place represents the location of the robot and parcels the array
-// of parcels constantly updated
+/* IF YOU DON'T UNDERSTAND HOW THE PROGRAM WORKS, GO TO THE END WHERE I SHOW THE FIRST ITERATIONS
+A state is a picture of the village at a given moment, where place represents the location of the robot and parcels the array
+of parcels constantly updated
+*/
+
+//*************************** SIMULATION *****************************************
 
 const roads = [
   "Alice's House-Bob's House",
@@ -169,3 +172,40 @@ Third iteration:
                          { place : "Farm", adress : "Cabin" }
                         ]
             }
+
+*/
+
+// ********************************************** THE MAIL'S TRUC ROUTE *************************************
+
+const mailRoute = [
+"Alice's House", "Cabin", "Alice's House", "Bob's House",
+"Town Hall", "Daria's House", "Ernie's House",
+"Grete's House", "Shop", "Grete's House", "Farm",
+"Marketplace", "Post Office"
+];
+
+function routeRobot(state, memory) {
+  if (memory.length == 0) {
+    memory = mailRoute;
+}
+  return {direction: memory[0], memory: memory.slice(1)};
+}
+
+runRobot(VillageState.random(), routeRobot, []);
+
+/* first iteration:
+action == routeRobot(VillageState.random(), []) returns { 
+ direction : "Alice's House", 
+ [
+   "Cabin", "Alice's House", "Bob's House", // the first element of the array is erased 
+  "Town Hall", "Daria's House", "Ernie's House",
+  "Grete's House", "Shop", "Grete's House", "Farm",
+  "Marketplace", "Post Office"
+ ];
+ }
+and the program keeps on as usual
+
+
+// ******************************************** PATH FINDING **********************************
+
+
