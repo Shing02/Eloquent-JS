@@ -33,29 +33,14 @@ function buildGraph(edges) {
 
 const roadGraph = buildGraph(roads);
 
-/* roadGraph == { 
-      "Alice's House": [ "Bob's House", "Cabin", "Post Office" ],
-      "Bob's House": [ "Alice's House", "Town Hall" ],
-      "Cabin": [ "Alice's House" ],
-      "Daria's House": [ "Ernie's House", "Town Hall" ],
-      "Ernie's House": [ "Daria's House", "Grete's House" ],
-      "Farm": [ "Grete's House", "Marketplace" ],
-      "Grete's House": [ "Ernie's House", "Farm", "Shop" ],
-      "Marketplace": [ "Farm", "Post Office", "Shop", "Town Hall" ],
-      "Post Office": [ "Alice's House", "Marketplace" ],
-      "Shop": [ "Grete's House", "Marketplace", "Town Hall" ],
-      "Town Hall": [ "Bob's House", "Daria's House", "Marketplace", "Shop" ]
-    }
-*/
-
 class VillageState {
-    constructor(place, parcels) {
+    constructor(place, parcels) {  // place represents the robot location at a given moment
     this.place = place;
     this.parcels = parcels;
   }
 
   move(destination) {
-    if (!roadGraph[this.place].includes(destination)) { // this block may be redundant because the randomRobot function makes sure we pick a place we can access from our current location
+    if (!roadGraph[this.place].includes(destination)) {  //if the robot can't access the destination directly from the current location
       return this;        
     } else {
       let parcels = this.parcels
@@ -63,13 +48,13 @@ class VillageState {
           if (p.place != this.place) return p;  // 
           return { place: destination, address: p.address };  // if a packet happens to be in our current location, we pick it and its position is updated each round
         })
-        .filter(p => p.place != p.address); // if adress == our current location, we drop the packet
+        .filter(p => p.place != p.address); // if adress == our current location, we drop the packet, ie it is erased from the array
       return new VillageState(destination, parcels);
     }
   }
 }
 
-function runRobot(state, robot, memory) {
+function runRobot(state, robot, memory) {  // memory is useless here because the robot has a random behavior, it doesn't remember the previous place, it just wanders around until all the packets are dropped
   for (let turn = 0;; turn++) {
     if (state.parcels.length == 0) {
       console.log(`Done in ${turn} turns`);
@@ -88,7 +73,7 @@ function randomPick(array) {
 }
 
 function randomRobot(state) {
-  return {direction: randomPick(roadGraph[state.place])}; // takes a VillageSate instance as argument and returns one location accessible from the current location
+  return {direction: randomPick(roadGraph[state.place])}; // the robot is a current place, this function examines all direct destinations from the current location and pick one randomly
 }
   
 VillageState.random = function(parcelCount = 5) { 
