@@ -20,7 +20,7 @@ const mailRoute = [
   "Town Hall", "Daria's House", "Ernie's House",
   "Grete's House", "Shop", "Grete's House", "Farm",
   "Marketplace", "Post Office"
-];
+];  
 
 function buildGraph(edges) {
   let graph = Object.create(null);
@@ -48,12 +48,12 @@ class VillageState {
   }
 
   move(destination) {
-    if (!roadGraph[this.place].includes(destination)) { // this block may be redundant because the randomRobot function makes sure we pick a place we can access from our current location
+    if (!roadGraph[this.place].includes(destination)) { 
       return this;
     } else {
       let parcels = this.parcels
         .map(p => {
-          if (p.place != this.place) return p; // 
+          if (p.place != this.place) return p; 
           return {
             place: destination,
             address: p.address
@@ -112,7 +112,7 @@ function routeRobot(state, memory) {
   return {
     direction: memory[0],
     memory: memory.slice(1)
-  };
+  };  // the robot just follows an established circular circuit and ends when all the packets have been dropped. 
 }
 
 runRobot(VillageState.random(), routeRobot, []);
