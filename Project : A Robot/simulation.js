@@ -76,15 +76,15 @@ function randomRobot(state) {
   return {direction: randomPick(roadGraph[state.place])}; // the robot is a current place, this function examines all direct destinations from the current location and pick one randomly
 }
   
-VillageState.random = function(parcelCount = 5) { 
+VillageState.random = function(parcelCount = 5) { // the function generates 5 parcels if parcelCount is non precised
   let parcels = [];
   for (let i = 0; i < parcelCount; i++) {
-    let address = randomPick(Object.keys(roadGraph));
+    let address = randomPick(Object.keys(roadGraph)); // picks a destination randomly in roadGraph and calls it the adress
     let place;
     do {
-      place = randomPick(Object.keys(roadGraph));
+      place = randomPick(Object.keys(roadGraph)); // picks a destination randomly in roadGraph, PROVIDED IT IS NOT SIMILAR TO ADRESS, and calls it the destination
     } while (place == address);
-    parcels.push({place, address});
+    parcels.push({place, address});  
   }
   return new VillageState("Post Office", parcels);
 };
