@@ -115,10 +115,7 @@ function findRoute(graph, from, to) {
   }
 }
 
-function goalOrientedRobot({
-  place,
-  parcels
-}, route) {
+function goalOrientedRobot({place, parcels}, route) {
   if (route.length == 0) {
     let parcel = parcels[0];
     if (parcel.place != place) {
