@@ -41,18 +41,18 @@ class VillageState {
   }
 
   move(destination) {
-    if (!roadGraph[this.place].includes(destination)) { // this block may be redundant because the randomRobot function makes sure we pick a place we can access from our current location
+    if (!roadGraph[this.place].includes(destination)) { 
       return this;
     } else {
       let parcels = this.parcels
         .map(p => {
-          if (p.place != this.place) return p; // 
+          if (p.place != this.place) return p; 
           return {
             place: destination,
             address: p.address
-          }; // if a packet happens to be in our current location, we pick it and its position is updated each round
+          }; 
         })
-        .filter(p => p.place != p.address); // if adress == our current location, we drop the packet
+        .filter(p => p.place != p.address); 
       return new VillageState(destination, parcels);
     }
   }
